@@ -17,6 +17,7 @@
     "@angular/upgrade": "2.0.0",
     "angular2-in-memory-web-api": "0.0.20",
     "body-parser": "~1.15.1",
+    "bootstrap": "^3.3.7",
     "cookie-parser": "~1.4.3",
     "core-js": "^2.4.1",
     "debug": "~2.2.0",
