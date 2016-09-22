@@ -4,6 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+var config = require('./routes/config');
 
 var routes = require('./routes/index');
 
@@ -27,6 +29,8 @@ app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE');
   next();
 });
+
+mongoose.connect(config.getDbConnectionString());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
