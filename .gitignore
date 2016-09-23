@@ -105,6 +105,11 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
-
-public/images/
-public/javascripts/
+assets/app.component.js
+assets/app.component.js.map
+assets/app.module.js
+assets/app.module.js.map
+assets/app/
+assets/boot.js
+assets/boot.js.map
+typings/
