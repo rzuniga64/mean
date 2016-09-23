@@ -3,7 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "gulp": "gulp",
+    "postinstall": "typings install --global",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "typings": "typings",
+    "webdriver:update": "webdriver-manager update"
   },
   "dependencies": {
     "@angular/common": "2.0.0",
