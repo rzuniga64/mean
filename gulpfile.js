@@ -33,6 +33,10 @@ gulp.task('vendor', function() {
         .pipe(gulp.dest(vendor + '/@angular'));
 
     //reflect metadata
+    gulp.src('node_modules/angular2-in-memory-web-api/**')
+        .pipe(gulp.dest(vendor + '/angular2-in-memory-web-api/'));
+
+    //reflect metadata
     gulp.src('node_modules/core-js/**')
         .pipe(gulp.dest(vendor + '/core-js/'));
 
