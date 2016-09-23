@@ -33,6 +33,10 @@ gulp.task('vendor', function() {
         .pipe(gulp.dest(vendor + '/@angular'));
 
     //reflect metadata
+    gulp.src('node_modules/core-js/**')
+        .pipe(gulp.dest(vendor + '/core-js/'));
+
+    //reflect metadata
     gulp.src('node_modules/reflect-metadata/**')
         .pipe(gulp.dest(vendor + '/reflect-metadata/'));
 
