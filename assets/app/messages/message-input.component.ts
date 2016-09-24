@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {MessageService} from "./message.service";
-import {FormGroup, FormBuilder, Validators} from "@angular/forms";
+import {FormGroup, FormBuilder, FormControl, Validators} from "@angular/forms";
 import {Message} from "./message";
 import {ErrorService} from "../errors/error.service";
 
@@ -8,10 +8,10 @@ import {ErrorService} from "../errors/error.service";
     selector: 'my-message-input',
     template: `
         <section class="col-md-8 col-md-offset-2">
-            <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+            <form #messageForm="ngForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="content">Content</label>
-                    <input [formControl]="messageForm.controls['content']" type="text" id="content" class="form-control" [ngModel]="message?.content">
+                    <input type="text" class="form-control" id="content" name="content" required [ngModel]="content" #content="ngModel">
                 </div>
                 <button type="submit" class="btn btn-primary">{{ !message ? 'Send Message' : 'Save Message' }}</button>
                 <button type="button" class="btn btn-danger" (click)="onCancel()" *ngIf="message"> Cancel </button>
@@ -21,14 +21,19 @@ import {ErrorService} from "../errors/error.service";
 })
 
  export class MessageInputComponent implements OnInit {
+
     messageForm: FormGroup;
     message: Message = null;
+    content: FormControl;
 
     constructor(private _fb:FormBuilder, private _messageService: MessageService, private _errorService: ErrorService) {}
 
     ngOnInit() {
+
+        this.content = new FormControl('', Validators.required);
+
         this.messageForm = this._fb.group({
-            content: ['', Validators.required]
+            content: this.content
         });
 
         this._messageService.messageIsEdit.subscribe(
