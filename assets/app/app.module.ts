@@ -6,6 +6,7 @@ import {MessageComponent}           from "./messages/message.component";
 import {MessageListComponent}       from "./messages/message-list.component";
 import {MessageInputComponent}      from "./messages/message-input.component";
 import {HeaderComponent}            from "./header.component";
+import {AuthenticationComponent}    from "./auth/authentication.component";
 
 import {MessageService}             from "./messages/message.service";
 import {ErrorService}               from "./errors/error.service";
@@ -20,7 +21,8 @@ import {ErrorService}               from "./errors/error.service";
         MessageComponent,
         MessageListComponent,
         MessageInputComponent,
-        HeaderComponent
+        HeaderComponent,
+        AuthenticationComponent
     ],
     bootstrap: [ AppComponent ],
     providers:     [
