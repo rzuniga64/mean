@@ -9,13 +9,10 @@ import {HeaderComponent}            from "./header.component";
 import {MessageService}             from "./messages/message.service";
 import {ErrorService}               from "./errors/error.service";
 
-import {Message}                    from "./messages/message";
-
 @NgModule({
     imports: [ BrowserModule ],
     declarations: [
         AppComponent,
-        Message,
         MessageComponent,
         MessageListComponent,
         MessageInputComponent,
