@@ -7,6 +7,7 @@ import {MessageInputComponent}      from "./messages/message-input.component";
 import {HeaderComponent}            from "./header.component";
 
 import {MessageService}             from "./messages/message.service";
+import {ErrorService}               from "./errors/error.service";
 
 import {Message}                    from "./messages/message";
 
@@ -22,7 +23,8 @@ import {Message}                    from "./messages/message";
     ],
     bootstrap: [ AppComponent ],
     providers:     [
-        MessageService
+        MessageService,
+        ErrorService
     ]
 })
 export class AppModule { }
