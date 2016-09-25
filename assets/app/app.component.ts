@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'my-app',
     template: `
-        <h1>A MongoDB Express Angular NodeJS App</h1>
         <div class="container">
+            <h2>A MongoDB Express Angular NodeJS App</h2>
             <my-header></my-header>
         </div>
     `
