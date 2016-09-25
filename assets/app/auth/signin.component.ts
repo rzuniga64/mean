@@ -9,37 +9,45 @@ import {ErrorService} from "../errors/error.service";
     selector: 'my-signin',
     template: `
         <section class="col-md-8 col-md-offset-2">
-            <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <form signinForm="ngForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="email">Mail</label>
-                    <input [formControl]="myForm.controls['email']" type="email" id="email" class="form-control">
+                    <input type="email" class="form-control" id="email" name="email" required [ngModel]="email" #email="ngModel" >
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input [formControl]="myForm.controls['password']" type="password" id="password" class="form-control">
+                    <input type="password" class="form-control" id="password" name="password" required [ngModel]="content" #content="ngModel" >
                 </div>
-                <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Sign In</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!signinForm.valid">Sign In</button>
             </form>
         </section>
     `
 })
 export class SigninComponent implements OnInit {
-    myForm: FormGroup;
+
+    signinForm: FormGroup;
+    email: FormControl;
+    password: FormControl;
 
     constructor(private _fb:FormBuilder, private _authService: AuthService, private _router: Router, private _errorService: ErrorService) {}
 
     ngOnInit() {
-        this.myForm = this._fb.group({
-            email: ['', Validators.compose([
-                Validators.required,
-                this.isEmail
-            ])],
-            password: ['', Validators.required]
+
+        this.email = new FormControl(['', Validators.compose([
+            Validators.required,
+            this.isEmail
+        ])]);
+
+        this.password = new FormControl('', Validators.required);
+        
+        this.signinForm = this._fb.group({
+            email: this.email,
+            password: this.password
         });
     }
 
     onSubmit() {
-        const user = new User(this.myForm.value.email, this.myForm.value.password);
+        const user = new User(this.signinForm.value.email, this.signinForm.value.password);
         this._authService.signin(user)
             .subscribe(
                 data => {
