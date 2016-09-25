@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
         <div class="container">
             <h2>A MongoDB Express Angular NodeJS App</h2>
             <my-header></my-header>
+            <router-outlet></router-outlet>
         </div>
     `
 })
