@@ -9,6 +9,7 @@ import {MessageInputComponent}      from "./messages/message-input.component";
 import {MessagesComponent}          from "./messages/messages.component";
 import {HeaderComponent}            from "./header.component";
 import {AuthenticationComponent}    from "./auth/authentication.component";
+import {SigninComponent}          from "./auth/signin.component";
 
 import {routing}                    from "./app.routes";
 import { appRoutingProviders }      from './app.routes';
@@ -31,7 +32,8 @@ import {ErrorService}               from "./errors/error.service";
         MessageInputComponent,
         MessagesComponent,
         HeaderComponent,
-        AuthenticationComponent
+        AuthenticationComponent,
+        SigninComponent
     ],
     bootstrap: [ AppComponent ],
     providers:     [
