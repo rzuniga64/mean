@@ -16,11 +16,14 @@ import {SignupComponent}            from "./auth/signup.component";
 import {LogoutComponent}            from "./auth/logout.component";
 
 import {routing}                    from "./app.routes";
-import { appRoutingProviders }      from './app.routes';
+import {appRoutingProviders}        from './app.routes';
 
 import {MessageService}             from "./messages/message.service";
 import {AuthService}                from "./auth/auth.service";
 import {ErrorService}               from "./errors/error.service";
+import {HashLocationStrategy}       from "@angular/common";
+import {LocationStrategy}           from "@angular/common";
+
 
 @NgModule({
     imports: [
@@ -48,7 +51,8 @@ import {ErrorService}               from "./errors/error.service";
         AuthService,
         ErrorService,
         appRoutingProviders,
-        FormBuilder
+        FormBuilder,
+        [{ provide: LocationStrategy, useClass: HashLocationStrategy }]
     ]
 })
 export class AppModule { }
