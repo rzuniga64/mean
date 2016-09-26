@@ -5,8 +5,8 @@ import {AuthenticationComponent} from "./auth/authentication.component";
 import {MessagesComponent} from "./messages/messages.component";
 
 const routes: Routes = [
-    {path: '', component: MessagesComponent },
-    {path: 'auth', component: AuthenticationComponent}
+    {path: 'auth', component: AuthenticationComponent},
+    {path: '', component: MessagesComponent }
 ];
 export const appRoutingProviders: any[] = [];
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);
