@@ -29,7 +29,7 @@ export class MessageService {
     }
 
     addMessage(message: Message) {
-        const body = JSON.stringify(message);
+        const body = JSON.stringify(message);  // turn the message object into a string version.
         const headers = new Headers({'Content-Type': 'application/json'});
         const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
         return this._http.post('http://localhost:3000/message' + token, body, {headers: headers})
