@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 var config = require('./routes/config');
 
 var routes = require('./routes/index');
+var messageRoutes = require('./routes/messages');
 
 var app = express();
 
@@ -22,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/message', messageRoutes);  // this middleware needs to be above the next line
 app.use('/', routes);
 
 app.use(function(req, res, next) {
