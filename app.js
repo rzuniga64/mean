@@ -9,6 +9,7 @@ var config = require('./routes/config');
 
 var routes = require('./routes/index');
 var messageRoutes = require('./routes/messages');
+var userRoutes = require('./routes/users');
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/message', messageRoutes);  // this middleware needs to be above the next line
+app.use('/user', userRoutes);
 app.use('/', routes);
 
 app.use(function(req, res, next) {
