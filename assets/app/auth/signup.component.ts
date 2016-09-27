@@ -1,14 +1,15 @@
 import { Component, OnInit } from "@angular/core";
 import {FormBuilder, FormGroup, FormControl, Validators} from "@angular/forms";
+import {ErrorService} from "../errors/error.service";
 import {User} from "./user";
 import {AuthService} from "./auth.service";
-import {ErrorService} from "../errors/error.service";
+import {EmailValidator} from './emailValidator';
 
 @Component({
     selector: 'my-signup',
     template: `
         <section class="col-md-8 col-md-offset-2">
-            <form #signupForm="ngForm" (ngSubmit)="onSubmit()">
+            <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm.value)">
                 <div class="form-group">
                     <label for="firstName">First Name</label>
                    <input type="text" class="form-control" id="firstName" name="firstName" required [ngModel]="firstName" #firstName="ngModel" >
@@ -33,47 +34,29 @@ import {ErrorService} from "../errors/error.service";
 
 export class SignupComponent implements OnInit {
     signupForm: FormGroup;
-    firstName: FormControl;
-    lastName: FormControl;
-    email: FormControl;
-    password: FormControl;
 
     constructor(private _fb:FormBuilder, private _authService: AuthService, private _errorService: ErrorService) { }
 
     ngOnInit() {
 
-        this.firstName = new FormControl('', Validators.required);
-        this.lastName = new FormControl('', Validators.required);
-        this.email = new FormControl(['', Validators.compose([
-            Validators.required,
-            this.isEmail
-        ])]);
-        this.password = new FormControl('', Validators.required);
-
         this.signupForm = this._fb.group({
-            firstName: this.firstName,
-            lastName: this.lastName,
-            email: this.email,
-            password: this.password
+            firstName: new FormControl('', Validators.required),
+            lastName: new FormControl('', Validators.required),
+            email: new FormControl(['', Validators.compose([
+                Validators.required,
+                EmailValidator.invalidEmail
+            ])]),
+            password: new FormControl('', Validators.required)
         });
     }
 
-    onSubmit() {
-        //const user = new User(this.signupForm.value.email, this.signupForm.value.password, this.signupForm.value.firstName, this.signupForm.value.lastName);
-        const user = new User (this.signupForm.get('email').value, this.signupForm.get('password').value,
-                               this.signupForm.get('firstName').value, this.signupForm.get('lastName').value);
+    onSubmit(form: any) {
+        const user = new User (form.email, form.password, form.firstName, form.lastName);
         console.log(user);
         this._authService.signup(user)
             .subscribe(
                 data => console.log(data),
                 error => this._errorService.handleError(error)
             )
-    }
-
-
-     private isEmail(control: FormControl): {[s: string]: boolean} {
-        if (!control.value.match("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")) {
-            return {invalidMail: true};
-        }
     }
 }
