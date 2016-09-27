@@ -19,7 +19,7 @@ import {EmailValidator} from '../emailValidator';
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password" name="password" required [ngModel]="content" #content="ngModel" >
                 </div>
-                <button type="submit" class="btn btn-primary" [disabled]="!signinForm.valid">Sign Up</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!signinForm.valid">Sign In</button>
             </form>
         </section>
     `
