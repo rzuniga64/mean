@@ -1,5 +1,4 @@
 import { EventEmitter } from "@angular/core";
-
 import { Error } from "./error";
 
 export class ErrorService {
