@@ -15,6 +15,7 @@ import {AuthenticationComponent}    from "./auth/authentication.component";
 import {SigninComponent}            from "./auth/signin.component";
 import {SignupComponent}            from "./auth/signup.component";
 import {LogoutComponent}            from "./auth/logout.component";
+import {ErrorComponent}             from "./errors/error.component";
 
 import {routing}                    from "./app.routes";
 import {appRoutingProviders}        from './app.routes';
@@ -47,7 +48,8 @@ import {LocationStrategy}           from "@angular/common";
         AuthenticationComponent,
         SigninComponent,
         SignupComponent,
-        LogoutComponent
+        LogoutComponent,
+        ErrorComponent
     ],
     bootstrap: [ AppComponent ],
     providers:     [
