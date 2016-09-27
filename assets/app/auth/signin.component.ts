@@ -42,7 +42,7 @@ export class SigninComponent implements OnInit {
     }
 
 
-    onSubmit(form) {
+    onSubmit(form: any) {
         const user = new User(form.email, form.password);
         this._authService.signin(user)
             .subscribe(

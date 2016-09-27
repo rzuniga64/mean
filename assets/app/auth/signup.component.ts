@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, FormControl, Validators} from "@angular/forms";
 import {ErrorService} from "../errors/error.service";
 import {User} from "./user";
 import {AuthService} from "./auth.service";
-import {EmailValidator} from './emailValidator';
+import {EmailValidator} from '../emailValidator';
 
 @Component({
     selector: 'my-signup',
