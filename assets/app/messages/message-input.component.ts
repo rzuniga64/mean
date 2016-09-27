@@ -8,7 +8,7 @@ import {ErrorService} from "../errors/error.service";
     selector: 'my-message-input',
     template: `
         <section class="col-md-8 col-md-offset-2">
-            <form #messageForm="ngForm" (ngSubmit)="onSubmit()">
+            <form #messageForm="ngForm" (ngSubmit)="onSubmit(messageForm.value)">
                 <div class="form-group">
                     <label for="content">Content</label>
                     <input type="text" class="form-control" id="content" name="content" required [ngModel]="content" #content="ngModel">
@@ -47,10 +47,10 @@ import {ErrorService} from "../errors/error.service";
         this.message = null;
     }
 
-    onSubmit() {
+    onSubmit(messageForm: any) {
         if (this.message) {
             // Edit
-            this.message.content = this.messageForm.get('content').value;
+            this.message.content = messageForm.content;
             this._messageService.updateMessage(this.message)
                 .subscribe(
                     data => console.log(data),
@@ -58,7 +58,7 @@ import {ErrorService} from "../errors/error.service";
                 );
             this.message = null;
         } else {
-            const message:Message = new Message(this.messageForm.get('content').value, null, 'Dummy', null);
+            const message:Message = new Message(messageForm.content, null, 'Dummy', null);
             this._messageService.addMessage(message)
                 .subscribe(
                     data => {
