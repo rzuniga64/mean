@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {MessageService} from "./message.service";
-import {FormGroup, FormBuilder, FormControl, Validators} from "@angular/forms";
+import {FormGroup, FormControl, Validators} from "@angular/forms";
 import {Message} from "./message";
 import {ErrorService} from "../errors/error.service";
 
@@ -11,7 +11,7 @@ import {ErrorService} from "../errors/error.service";
             <form #messageForm="ngForm" (ngSubmit)="onSubmit(messageForm.value)">
                 <div class="form-group">
                     <label for="content">Content</label>
-                    <input type="text" class="form-control" id="content" name="content" required [ngModel]="content" #content="ngModel">
+                    <input type="text" class="form-control" id="content" name="content" required [ngModel]="content">
                 </div>
                 <button type="submit" class="btn btn-primary">{{ !message ? 'Send Message' : 'Save Message' }}</button>
                 <button type="button" class="btn btn-danger" (click)="onCancel()" *ngIf="message"> Cancel </button>
@@ -24,16 +24,13 @@ import {ErrorService} from "../errors/error.service";
 
     messageForm: FormGroup;
     message: Message = null;
-    content: FormControl;
 
-    constructor(private _fb:FormBuilder, private _messageService: MessageService, private _errorService: ErrorService) {}
+    constructor(private _messageService: MessageService, private _errorService: ErrorService) {}
 
     ngOnInit() {
 
-        this.content = new FormControl('', Validators.required);
-
-        this.messageForm = this._fb.group({
-            content: this.content
+        this.messageForm = new FormGroup({
+            content: new FormControl('', Validators.required)
         });
 
         this._messageService.messageIsEdit.subscribe(
