@@ -21,7 +21,6 @@
     "@angular/upgrade": "2.1.2",
     "angular2-in-memory-web-api": "0.0.21",
     "body-parser": "~1.15.1",
-    "chai": "^3.5.0",
     "cookie-parser": "~1.4.3",
     "core-js": "^2.4.1",
     "debug": "~2.2.0",
