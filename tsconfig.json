@@ -8,16 +8,14 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true
+    "suppressImplicitAnyIndexErrors": true,
+    "typeRoots": [
+      "./node_modules/@types/"
+    ]
   },
-  "filesGlob": [
-    "./dev/**/*.ts",
-    "!./node_modules/**/*.ts"
-  ],
+  "compileOnSave": true,
   "exclude": [
-    "node_modules"
-  ],
-  "atom": {
-    "rewriteTsconfig": true
-  }
+    "node_modules/*",
+    "**/*-aot.ts"
+  ]
 }
