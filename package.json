@@ -5,10 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "gulp": "gulp",
-    "postinstall": "typings install --global",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "typings": "typings",
     "webdriver:update": "webdriver-manager update"
   },
   "dependencies": {
@@ -23,6 +21,7 @@
     "@angular/upgrade": "2.1.2",
     "angular2-in-memory-web-api": "0.0.21",
     "body-parser": "~1.15.1",
+    "chai": "^3.5.0",
     "cookie-parser": "~1.4.3",
     "core-js": "^2.4.1",
     "debug": "~2.2.0",
@@ -36,19 +35,26 @@
     "ng2-bootstrap": "^1.1.16",
     "password-hash": "^1.2.2",
     "reflect-metadata": "^0.1.8",
-    "rxjs": "~5.0.0-beta.12",
+    "rxjs": "~5.0.0-rc.2",
     "serve-favicon": "~2.3.0",
     "systemjs": "^0.19.40",
-    "typings": "^1.5.0",
     "zone.js": "^0.6.26"
   },
   "devDependencies": {
     "del": "^2.2.2",
+    "graceful-fs": "^4.1.10",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-sourcemaps": "^2.2.0",
     "gulp-typescript": "^3.1.2",
     "gulp-uglify": "^2.0.0",
-    "typescript": "^2.0.7"
+    "lodash": "^4.16.4",
+    "minimatch": "^3.0.3",
+    "typescript": "^2.0.7",
+
+    "@types/core-js": "^0.9.34",
+    "@types/node": "^6.0.46",
+    "@types/jasmine": "^2.5.36",
+    "@types/selenium-webdriver": "^2.53.33"
   }
 }
