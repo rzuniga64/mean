@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import {FormBuilder, FormGroup, FormControl, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, FormControl, Validators, NgForm} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ErrorService} from "../errors/error.service";
 import {User} from "./user";
@@ -10,14 +10,14 @@ import {EmailValidator} from '../emailValidator';
     selector: 'my-signin',
     template: `
         <section class="col-md-8 col-md-offset-2">
-            <form #signinForm="ngForm" (ngSubmit)="onSubmit(signinForm.value)">
+            <form #signinForm="ngForm" (ngSubmit)="onSubmit(signinForm)">
                 <div class="form-group">
                     <label for="email">Mail</label>
-                    <input type="email" class="form-control" id="email" name="email" required [ngModel]="email" #email="ngModel" >
+                    <input type="email" class="form-control" id="email" name="email" required [ngModel]="email" >
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" required [ngModel]="content" #content="ngModel" >
+                    <input type="password" class="form-control" id="password" name="password" required [ngModel]="content">
                 </div>
                 <button type="submit" class="btn btn-primary" [disabled]="!signinForm.valid">Sign In</button>
             </form>
@@ -42,8 +42,8 @@ export class SigninComponent implements OnInit {
     }
 
 
-    onSubmit(form: any) {
-        const user = new User(form.email, form.password);
+    onSubmit(form: NgForm) {
+        const user = new User(form.value.email, form.value.password);
         this._authService.signin(user)
             .subscribe(
                 data => {
