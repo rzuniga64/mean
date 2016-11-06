@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import {FormBuilder, FormGroup, FormControl, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, FormControl, Validators, NgForm} from "@angular/forms";
 import {ErrorService} from "../errors/error.service";
 import {User} from "./user";
 import {AuthService} from "./auth.service";
@@ -9,22 +9,22 @@ import {EmailValidator} from '../emailValidator';
     selector: 'my-signup',
     template: `
         <section class="col-md-8 col-md-offset-2">
-            <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm.value)">
+            <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
                 <div class="form-group">
                     <label for="firstName">First Name</label>
-                   <input type="text" class="form-control" id="firstName" name="firstName" required [ngModel]="firstName" #firstName="ngModel" >
+                   <input type="text" class="form-control" id="firstName" name="firstName" required [ngModel]="firstName">
                 </div>
                 <div class="form-group">
                     <label for="lastName">Last Name</label>
-                   <input type="text" class="form-control" id="lastName" name="lastName" required [ngModel]="lastName" #lastName="ngModel" >
+                   <input type="text" class="form-control" id="lastName" name="lastName" required [ngModel]="lastName">
                 </div>
                 <div class="form-group">
                     <label for="email">Mail</label>
-                    <input type="email" class="form-control" id="email" name="email" required [ngModel]="email" #email="ngModel" >
+                    <input type="email" class="form-control" id="email" name="email" required [ngModel]="email">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" required [ngModel]="content" #content="ngModel" >
+                    <input type="password" class="form-control" id="password" name="password" required [ngModel]="password">
                 </div>
                 <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">Sign Up</button>
             </form>
@@ -50,8 +50,8 @@ export class SignupComponent implements OnInit {
         });
     }
 
-    onSubmit(form: any) {
-        const user = new User (form.email, form.password, form.firstName, form.lastName);
+    onSubmit(signupForm: NgForm) {
+        const user = new User (signupForm.value.email, signupForm.value.password, signupForm.value.firstName, signupForm.value.lastName);
         console.log(user);
         this._authService.signup(user)
             .subscribe(
