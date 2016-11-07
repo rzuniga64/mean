@@ -18,8 +18,6 @@ import {LogoutComponent}            from "./auth/logout.component";
 import {ErrorComponent}             from "./errors/error.component";
 
 import {routing}                    from "./app.routes";
-import {appRoutingProviders}        from './app.routes';
-import {authRouting}                from './auth/auth.routes';
 
 import {MessageService}             from "./messages/message.service";
 import {AuthService}                from "./auth/auth.service";
@@ -35,8 +33,7 @@ import {LocationStrategy}           from "@angular/common";
         ReactiveFormsModule,
         RouterModule,
         HttpModule,
-        routing,
-        authRouting
+        routing
     ],
     declarations: [
         AppComponent,
@@ -56,7 +53,6 @@ import {LocationStrategy}           from "@angular/common";
         MessageService,
         AuthService,
         ErrorService,
-        appRoutingProviders,
         FormBuilder,
         [{ provide: LocationStrategy, useClass: HashLocationStrategy }]
     ]
