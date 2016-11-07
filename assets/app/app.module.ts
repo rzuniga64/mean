@@ -1,10 +1,11 @@
 import {NgModule}                   from '@angular/core';
 import {BrowserModule}              from '@angular/platform-browser';
-import {RouterModule}               from "@angular/router";
-import {HttpModule}                 from "@angular/http";
 import {FormsModule}                from '@angular/forms';
 import {ReactiveFormsModule}        from '@angular/forms';
-import {FormBuilder}                from '@angular/forms';
+import {RouterModule}               from "@angular/router";
+import {HttpModule}                 from "@angular/http";
+import {routing}                    from "./app.routes"
+
 import {AppComponent}               from './app.component';
 import {MessageComponent}           from "./messages/message.component";
 import {MessageListComponent}       from "./messages/message-list.component";
@@ -16,8 +17,6 @@ import {SigninComponent}            from "./auth/signin.component";
 import {SignupComponent}            from "./auth/signup.component";
 import {LogoutComponent}            from "./auth/logout.component";
 import {ErrorComponent}             from "./errors/error.component";
-
-import {routing}                    from "./app.routes";
 
 import {MessageService}             from "./messages/message.service";
 import {AuthService}                from "./auth/auth.service";
@@ -52,8 +51,7 @@ import {LocationStrategy}           from "@angular/common";
     providers:     [
         MessageService,
         AuthService,
-        ErrorService,
-        FormBuilder,
+        ErrorService
         [{ provide: LocationStrategy, useClass: HashLocationStrategy }]
     ]
 })
