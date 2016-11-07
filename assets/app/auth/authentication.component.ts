@@ -16,16 +16,7 @@ import {AuthService} from "./auth.service";
         <div class="row spacing">
             <router-outlet></router-outlet>
         </div>
-    `,
-    styles: [`
-        .router-link-active {
-            color: #555;
-            cursor: default;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-bottom-color: transparent;
-        }
-    `]
+    `
 })
 
 export class AuthenticationComponent {
