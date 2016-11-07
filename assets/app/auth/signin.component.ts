@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import {FormBuilder, FormGroup, FormControl, Validators, NgForm} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ErrorService} from "../errors/error.service";
-import {User} from "./user";
+import {User} from "./user.model";
 import {AuthService} from "./auth.service";
 import {EmailValidator} from '../emailValidator';
 
