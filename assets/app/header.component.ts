@@ -5,8 +5,8 @@ import { Component } from "@angular/core";
         <header class="row">
             <nav class="col-md-8 col-md-offset-2">
                 <ul class="nav nav-pills">
-                    <li><a [routerLink]="['']">Messages</a></li>
-                    <li><a [routerLink]="['auth']">Authentication</a></li>
+                    <li routerLinkActive="active"><a [routerLink]="['/messages']">Messages</a></li>
+                    <li routerLinkActive="active"><a [routerLink]="['/auth']">Authentication</a></li>
                 </ul>
             </nav>
         </header>
@@ -23,11 +23,6 @@ import { Component } from "@angular/core";
         li {
             float: none;
             display: inline-block;
-        }
-        
-        .router-link-active {
-            background-color: #337ab7;
-            color: white;
         }
     `]
 })
