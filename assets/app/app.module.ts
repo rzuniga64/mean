@@ -51,7 +51,7 @@ import {LocationStrategy}           from "@angular/common";
     providers:     [
         MessageService,
         AuthService,
-        ErrorService
+        ErrorService,
         [{ provide: LocationStrategy, useClass: HashLocationStrategy }]
     ]
 })

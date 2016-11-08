@@ -34,7 +34,7 @@ import {ErrorService} from "../errors/error.service";
         });
 
         this._messageService.messageIsEdit.subscribe(
-            message => {
+            (message:Message) => {
                 this.message = message;
             }
         );
